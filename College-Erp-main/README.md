@@ -11,6 +11,7 @@ College ERP using MERN Stack
 6. Go to "localhost:3000/login/adminlogin"
 7. After successfully running the server, a dummy admin should be created.
 8. Dummy admin username = ADMDUMMY, password = 123
+9. new fa
 
 # TechStack
 
