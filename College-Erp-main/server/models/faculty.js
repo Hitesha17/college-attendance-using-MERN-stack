@@ -15,6 +15,7 @@ const facultySchema = mongoose.Schema({
   },
   password: {
     type: String,
+    required: true,
   },
   username: {
     type: String,
@@ -43,7 +44,7 @@ const facultySchema = mongoose.Schema({
   },
   passwordUpdated: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 });
 

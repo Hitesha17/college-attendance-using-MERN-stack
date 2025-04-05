@@ -8,8 +8,10 @@ import adminRoutes from "./routes/adminRoutes.js";
 import studentRoutes from "./routes/studentRoutes.js";
 import facultyRoutes from "./routes/facultyRoutes.js";
 import { addDummyAdmin } from "./controller/adminController.js";
+
 const app = express();
 dotenv.config();
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
@@ -22,6 +24,10 @@ const PORT = process.env.PORT || 5001;
 app.get("/", (req, res) => {
   res.send("Hello to college erp API");
 });
+
+// ✅ Fix Mongoose Deprecation Warning
+mongoose.set("strictQuery", false);
+
 mongoose
   .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,

@@ -34,7 +34,7 @@ const adminSchema = mongoose.Schema(
     },
     passwordUpdated: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   { strict: false }

@@ -19,21 +19,28 @@ export const facultySignIn = (formData, navigate) => async (dispatch) => {
     else navigate("/faculty/password");
   } catch (error) {
     console.error("Error in facultySignIn:", error);
-    dispatch({ type: SET_ERRORS, payload: error.response ? error.response.data : "An error occurred" });
+    dispatch({
+      type: SET_ERRORS,
+      payload: error.response ? error.response.data : "An error occurred",
+    });
   }
 };
 
-export const facultyUpdatePassword = (formData, navigate) => async (dispatch) => {
-  try {
-    const { data } = await api.facultyUpdatePassword(formData);
-    dispatch({ type: UPDATE_PASSWORD, payload: true });
-    alert("Password Updated");
-    navigate("/faculty/home");
-  } catch (error) {
-    console.error("Error in facultyUpdatePassword:", error);
-    dispatch({ type: SET_ERRORS, payload: error.response ? error.response.data : "An error occurred" });
-  }
-};
+export const facultyUpdatePassword =
+  (formData, navigate) => async (dispatch) => {
+    try {
+      const { data } = await api.facultyUpdatePassword(formData);
+      dispatch({ type: UPDATE_PASSWORD, payload: true });
+      alert("Password Updated");
+      navigate("/faculty/home");
+    } catch (error) {
+      console.error("Error in facultyUpdatePassword:", error);
+      dispatch({
+        type: SET_ERRORS,
+        payload: error.response ? error.response.data : "An error occurred",
+      });
+    }
+  };
 
 // Similarly update other actions...
 
@@ -43,7 +50,10 @@ export const updateFaculty = (formData) => async (dispatch) => {
     dispatch({ type: UPDATE_FACULTY, payload: true });
   } catch (error) {
     console.error("Error in updateFaculty:", error);
-    dispatch({ type: SET_ERRORS, payload: error.response ? error.response.data : "An error occurred" });
+    dispatch({
+      type: SET_ERRORS,
+      payload: error.response ? error.response.data : "An error occurred",
+    });
   }
 };
 
@@ -54,7 +64,10 @@ export const createTest = (formData) => async (dispatch) => {
     dispatch({ type: ADD_TEST, payload: true });
   } catch (error) {
     console.error("Error in createTest:", error);
-    dispatch({ type: SET_ERRORS, payload: error.response ? error.response.data : "An error occurred" });
+    dispatch({
+      type: SET_ERRORS,
+      payload: error.response ? error.response.data : "An error occurred",
+    });
   }
 };
 
@@ -64,7 +77,10 @@ export const getTest = (formData) => async (dispatch) => {
     dispatch({ type: GET_TEST, payload: data });
   } catch (error) {
     console.error("Error in getTest:", error);
-    dispatch({ type: SET_ERRORS, payload: error.response ? error.response.data : "An error occurred" });
+    dispatch({
+      type: SET_ERRORS,
+      payload: error.response ? error.response.data : "An error occurred",
+    });
   }
 };
 
@@ -74,42 +90,54 @@ export const getStudent = (formData) => async (dispatch) => {
     dispatch({ type: GET_STUDENT, payload: data });
   } catch (error) {
     console.error("Error in getStudent:", error);
-    dispatch({ type: SET_ERRORS, payload: error.response ? error.response.data : "An error occurred" });
+    dispatch({
+      type: SET_ERRORS,
+      payload: error.response ? error.response.data : "An error occurred",
+    });
   }
 };
 
-export const uploadMark = (marks, department, section, year, test) => async (dispatch) => {
-  try {
-    const formData = {
-      marks,
-      department,
-      section,
-      year,
-      test,
-    };
-    const { data } = await api.uploadMarks(formData);
-    alert("Marks Uploaded Successfully");
-    dispatch({ type: MARKS_UPLOADED, payload: true });
-  } catch (error) {
-    console.error("Error in uploadMark:", error);
-    dispatch({ type: SET_ERRORS, payload: error.response ? error.response.data : "An error occurred" });
-  }
-};
+export const uploadMark =
+  (marks, department, section, year, test) => async (dispatch) => {
+    try {
+      const formData = {
+        marks,
+        department,
+        section,
+        year,
+        test,
+      };
+      const { data } = await api.uploadMarks(formData);
+      alert("Marks Uploaded Successfully");
+      dispatch({ type: MARKS_UPLOADED, payload: true });
+    } catch (error) {
+      console.error("Error in uploadMark:", error);
+      dispatch({
+        type: SET_ERRORS,
+        payload: error.response ? error.response.data : "An error occurred",
+      });
+    }
+  };
 
-export const markAttendance = (checkedValue, subjectName, department, year, section) => async (dispatch) => {
-  try {
-    const formData = {
-      selectedStudents: checkedValue,
-      subjectName,
-      department,
-      year,
-      section,
-    };
-    const { data } = await api.markAttendance(formData);
-    alert("Attendance Marked Successfully");
-    dispatch({ type: ATTENDANCE_MARKED, payload: true });
-  } catch (error) {
-    console.error("Error in markAttendance:", error);
-    dispatch({ type: SET_ERRORS, payload: error.response ? error.response.data : "An error occurred" });
-  }
-};
+export const markAttendance =
+  (checkedValue, subjectName, department, year, section) =>
+  async (dispatch) => {
+    try {
+      const formData = {
+        selectedStudents: checkedValue,
+        subjectName,
+        department,
+        year,
+        section,
+      };
+      const { data } = await api.markAttendance(formData);
+      alert("Attendance Marked Successfully");
+      dispatch({ type: ATTENDANCE_MARKED, payload: true });
+    } catch (error) {
+      console.error("Error in markAttendance:", error);
+      dispatch({
+        type: SET_ERRORS,
+        payload: error.response ? error.response.data : "An error occurred",
+      });
+    }
+  };
