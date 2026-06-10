@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const API = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
-const API = axios.create({ baseURL: "erp.aditechsystems.com/" });
+const API = axios.create({ baseURL: "https://erp.aditechsystems.com/" });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("user")) {
